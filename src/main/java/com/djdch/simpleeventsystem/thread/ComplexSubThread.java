@@ -8,9 +8,9 @@ import com.djdch.simpleeventsystem.listener.ConsoleOutputListener;
 import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.LocalConsoleOutputListener;
 
-public class SimpleThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener {
+public class ComplexSubThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener {
 
-    public SimpleThread(String name) {
+    public ComplexSubThread(String name) {
         super(name);
     }
 
@@ -23,10 +23,21 @@ public class SimpleThread extends Thread implements ExceptionListener, ConsoleOu
         display("Registered self as ConsoleOutputListener");
         display("Registered self as LocalConsoleOutputListener");
 
+        boolean odd = true;
+
         while (isRunning()) {
             try {
-//                ExceptionEvent event = new ExceptionEvent(new Exception("Empty"));
-//                EventHandler.dispatch(event);
+                if (odd) {
+//                    ExceptionEvent event1 = new ExceptionEvent(new Exception("Error from " + getName()));
+//                    EventDispatcher.dispatch(event1);
+//                    ConsoleOutputEvent event1 = new ConsoleOutputEvent("Shell stuff from " + getName());
+//                    EventDispatcher.dispatch(event1);
+                } else { // even
+                    LocalConsoleOutputEvent event2 = new LocalConsoleOutputEvent("Shell thing from " + getName());
+                    EventDispatcher.dispatch(event2);
+                }
+
+                odd = !odd;
 
                 java.lang.Thread.sleep(2000);
             } catch (InterruptedException e) {
