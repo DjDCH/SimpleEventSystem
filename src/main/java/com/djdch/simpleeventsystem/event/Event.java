@@ -1,5 +1,6 @@
 package com.djdch.simpleeventsystem.event;
 
+import com.djdch.simpleeventsystem.handlerlist.HandlerList;
 import com.djdch.simpleeventsystem.util.Validate;
 
 public abstract class Event {

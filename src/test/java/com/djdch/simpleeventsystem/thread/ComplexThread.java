@@ -2,8 +2,8 @@ package com.djdch.simpleeventsystem.thread;
 
 import java.util.ArrayList;
 
+import com.djdch.simpleeventsystem.dispatcher.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
-import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ExceptionEvent;
 import com.djdch.simpleeventsystem.event.LocalConsoleOutputEvent;
 import com.djdch.simpleeventsystem.event.SmartConsoleOutputEvent;

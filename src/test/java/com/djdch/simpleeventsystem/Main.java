@@ -1,7 +1,7 @@
 package com.djdch.simpleeventsystem;
 
+import com.djdch.simpleeventsystem.dispatcher.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
-import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.thread.ComplexThread;
 
 public class Main {

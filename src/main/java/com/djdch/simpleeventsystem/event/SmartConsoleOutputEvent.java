@@ -2,6 +2,9 @@ package com.djdch.simpleeventsystem.event;
 
 import java.util.Date;
 
+import com.djdch.simpleeventsystem.handlerlist.HandlerList;
+import com.djdch.simpleeventsystem.handlerlist.SimpleHandlerList;
+
 public class SmartConsoleOutputEvent extends ConsoleOutputEvent implements Sourceable {
     private static final HandlerList handlers = new SimpleHandlerList();
     private Object source;

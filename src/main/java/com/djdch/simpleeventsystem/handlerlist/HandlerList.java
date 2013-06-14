@@ -1,4 +1,4 @@
-package com.djdch.simpleeventsystem.event;
+package com.djdch.simpleeventsystem.handlerlist;
 
 import com.djdch.simpleeventsystem.listener.Listener;
 

@@ -2,6 +2,9 @@ package com.djdch.simpleeventsystem.event;
 
 import java.util.Date;
 
+import com.djdch.simpleeventsystem.handlerlist.HandlerList;
+import com.djdch.simpleeventsystem.handlerlist.LocalHandlerList;
+
 public class LocalConsoleOutputEvent extends ConsoleOutputEvent {
     private static final HandlerList handlers = new LocalHandlerList();
 
