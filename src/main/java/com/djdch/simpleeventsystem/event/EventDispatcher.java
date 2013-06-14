@@ -4,6 +4,7 @@ import com.djdch.simpleeventsystem.listener.ConsoleOutputListener;
 import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.Listener;
 import com.djdch.simpleeventsystem.listener.LocalConsoleOutputListener;
+import com.djdch.simpleeventsystem.listener.SmartConsoleOutputListener;
 import com.djdch.simpleeventsystem.util.Validate;
 
 public class EventDispatcher {
@@ -20,6 +21,12 @@ public class EventDispatcher {
 
         if (listener instanceof LocalConsoleOutputListener) {
             LocalConsoleOutputEvent.getHandlerList().register(listener);
+
+            found = true;
+        }
+
+        if (listener instanceof SmartConsoleOutputListener) {
+            SmartConsoleOutputEvent.getHandlerList().register(listener);
 
             found = true;
         }
@@ -56,6 +63,10 @@ public class EventDispatcher {
 
             case LOCAL_CONSOLE_OUTPUT:
                 ((LocalConsoleOutputListener) listener).onLocalConsoleOutput((LocalConsoleOutputEvent) event);
+                break;
+
+            case SMART_CONSOLE_OUTPUT:
+                ((SmartConsoleOutputListener) listener).onSmartConsoleOutput((SmartConsoleOutputEvent) event);
                 break;
 
             case EXCEPTION:

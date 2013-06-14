@@ -20,6 +20,7 @@ public abstract class Event {
     public enum Type {
         EXCEPTION,
         CONSOLE_OUTPUT,
-        LOCAL_CONSOLE_OUTPUT;
+        LOCAL_CONSOLE_OUTPUT,
+        SMART_CONSOLE_OUTPUT;
     }
 }
