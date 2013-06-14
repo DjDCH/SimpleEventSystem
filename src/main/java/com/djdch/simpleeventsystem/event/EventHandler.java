@@ -9,11 +9,21 @@ public class EventHandler {
     public static synchronized void registerListener(Listener listener) {
         Validate.notNull(listener, "Listener cannot be null");
 
+        boolean found = false;
+
         if (listener instanceof ConsoleOutputListener) {
             ConsoleOutputEvent.getHandlerList().register(listener);
-        } else if (listener instanceof ExceptionListener) {
+
+            found = true;
+        }
+
+        if (listener instanceof ExceptionListener) {
             ExceptionEvent.getHandlerList().register(listener);
-        } else {
+
+            found = true;
+        }
+
+        if (!found) {
             throw new IllegalArgumentException("Unknown listener");
         }
     }
