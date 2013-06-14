@@ -1,7 +1,7 @@
 package com.djdch.simpleeventsystem.event;
 
 public class ExceptionEvent extends Event {
-    private static final HandlerList handlers = new HandlerList();
+    private static final HandlerList handlers = new SimpleHandlerList();
     private Exception exception;
 
     public ExceptionEvent(Exception exception) {

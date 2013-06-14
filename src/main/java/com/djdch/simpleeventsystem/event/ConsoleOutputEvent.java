@@ -3,12 +3,23 @@ package com.djdch.simpleeventsystem.event;
 import java.util.Date;
 
 public class ConsoleOutputEvent extends Event {
-    private static final HandlerList handlers = new HandlerList();
+    private static final HandlerList handlers = new SimpleHandlerList();
     private Date date;
     private String output;
 
+    public ConsoleOutputEvent(String output) {
+        this(new Date(), output);
+    }
+
     public ConsoleOutputEvent(Date date, String output) {
         super(Event.Type.CONSOLE_OUTPUT);
+
+        this.date = date;
+        this.output = output;
+    }
+
+    protected ConsoleOutputEvent(Event.Type type, Date date, String output) {
+        super(type);
 
         this.date = date;
         this.output = output;
