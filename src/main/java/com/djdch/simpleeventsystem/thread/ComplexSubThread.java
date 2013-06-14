@@ -4,6 +4,7 @@ import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
 import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ExceptionEvent;
 import com.djdch.simpleeventsystem.event.LocalConsoleOutputEvent;
+import com.djdch.simpleeventsystem.event.SmartConsoleOutputEvent;
 import com.djdch.simpleeventsystem.listener.ConsoleOutputListener;
 import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.LocalConsoleOutputListener;
@@ -33,8 +34,10 @@ public class ComplexSubThread extends Thread implements ExceptionListener, Conso
 //                    ConsoleOutputEvent event1 = new ConsoleOutputEvent("Shell stuff from " + getName());
 //                    EventDispatcher.dispatch(event1);
                 } else { // even
-                    LocalConsoleOutputEvent event2 = new LocalConsoleOutputEvent("Shell thing from " + getName());
-                    EventDispatcher.dispatch(event2);
+//                    LocalConsoleOutputEvent event2 = new LocalConsoleOutputEvent("Shell thing from " + getName());
+//                    EventDispatcher.dispatch(event2);
+                    SmartConsoleOutputEvent event3 = new SmartConsoleOutputEvent(this, "Shell thing from " + getName());
+                    EventDispatcher.dispatch(event3);
                 }
 
                 odd = !odd;

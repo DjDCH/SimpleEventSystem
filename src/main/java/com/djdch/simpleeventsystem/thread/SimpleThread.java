@@ -4,11 +4,13 @@ import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
 import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ExceptionEvent;
 import com.djdch.simpleeventsystem.event.LocalConsoleOutputEvent;
+import com.djdch.simpleeventsystem.event.SmartConsoleOutputEvent;
 import com.djdch.simpleeventsystem.listener.ConsoleOutputListener;
 import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.LocalConsoleOutputListener;
+import com.djdch.simpleeventsystem.listener.SmartConsoleOutputListener;
 
-public class SimpleThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener {
+public class SimpleThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener, SmartConsoleOutputListener {
 
     public SimpleThread(String name) {
         super(name);
@@ -50,5 +52,10 @@ public class SimpleThread extends Thread implements ExceptionListener, ConsoleOu
     @Override
     public void onLocalConsoleOutput(LocalConsoleOutputEvent event) {
         display("LocalConsoleOutputEvent received with ouput : " + event.getOutput());
+    }
+
+    @Override
+    public void onSmartConsoleOutput(SmartConsoleOutputEvent event) {
+        display("SmartConsoleOutputEvent received with ouput : " + event.getOutput());
     }
 }

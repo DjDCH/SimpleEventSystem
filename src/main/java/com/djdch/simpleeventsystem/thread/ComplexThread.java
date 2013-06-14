@@ -1,18 +1,23 @@
 package com.djdch.simpleeventsystem.thread;
 
+import java.util.ArrayList;
+
 import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
 import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.event.ExceptionEvent;
 import com.djdch.simpleeventsystem.event.LocalConsoleOutputEvent;
+import com.djdch.simpleeventsystem.event.SmartConsoleOutputEvent;
 import com.djdch.simpleeventsystem.listener.ConsoleOutputListener;
 import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.LocalConsoleOutputListener;
+import com.djdch.simpleeventsystem.listener.SmartConsoleOutputListener;
 
-public class ComplexThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener {
+public class ComplexThread extends Thread implements ExceptionListener, ConsoleOutputListener, LocalConsoleOutputListener, SmartConsoleOutputListener {
     ComplexSubThread runnable1;
     ComplexSubThread runnable2;
     java.lang.Thread thread1;
     java.lang.Thread thread2;
+    ArrayList<Runnable> runnables;
 
     public ComplexThread(String name) {
         super(name);
@@ -22,6 +27,10 @@ public class ComplexThread extends Thread implements ExceptionListener, ConsoleO
 
         thread1 = new java.lang.Thread(runnable1);
         thread2 = new java.lang.Thread(runnable2);
+
+        runnables = new ArrayList<Runnable>();
+        runnables.add(runnable1);
+        runnables.add(runnable2);
     }
 
     @Override
@@ -46,8 +55,8 @@ public class ComplexThread extends Thread implements ExceptionListener, ConsoleO
 //                    ConsoleOutputEvent event1 = new ConsoleOutputEvent("Shell stuff from " + getName());
 //                    EventDispatcher.dispatch(event1);
                 } else { // even
-                    LocalConsoleOutputEvent event2 = new LocalConsoleOutputEvent("Shell thing from " + getName());
-                    EventDispatcher.dispatch(event2);
+//                    LocalConsoleOutputEvent event2 = new LocalConsoleOutputEvent("Shell thing from " + getName());
+//                    EventDispatcher.dispatch(event2);
                 }
 
                 odd = !odd;
@@ -82,5 +91,12 @@ public class ComplexThread extends Thread implements ExceptionListener, ConsoleO
     @Override
     public void onLocalConsoleOutput(LocalConsoleOutputEvent event) {
         display("LocalConsoleOutputEvent received with ouput : " + event.getOutput());
+    }
+
+    @Override
+    public void onSmartConsoleOutput(SmartConsoleOutputEvent event) {
+        if (runnables.contains(event.getSource())) {
+            display("SmartConsoleOutputEvent received with ouput : " + event.getOutput());
+        }
     }
 }

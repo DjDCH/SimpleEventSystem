@@ -3,7 +3,6 @@ package com.djdch.simpleeventsystem;
 import com.djdch.simpleeventsystem.event.ConsoleOutputEvent;
 import com.djdch.simpleeventsystem.event.EventDispatcher;
 import com.djdch.simpleeventsystem.thread.ComplexThread;
-import com.djdch.simpleeventsystem.thread.SimpleThread;
 
 public class Main {
 
@@ -11,7 +10,8 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        SimpleThread runnable1 = new SimpleThread("Bob");
+//        SimpleThread runnable1 = new SimpleThread("Bob");
+        ComplexThread runnable1 = new ComplexThread("Bob");
         ComplexThread runnable2 = new ComplexThread("Joe");
 
         Thread thread1 = new Thread(runnable1);
