@@ -5,7 +5,7 @@ import com.djdch.simpleeventsystem.listener.ExceptionListener;
 import com.djdch.simpleeventsystem.listener.Listener;
 import com.djdch.simpleeventsystem.util.Validate;
 
-public class EventHandler {
+public class EventDispatcher {
     public static synchronized void registerListener(Listener listener) {
         Validate.notNull(listener, "Listener cannot be null");
 
